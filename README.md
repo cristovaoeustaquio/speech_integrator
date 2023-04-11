@@ -41,15 +41,15 @@ Yurih|BD
 História | Atividade | Responsável
 ---------|------------|-------------
 1,2 | Instalar banco de dados e criar primeiras tabelas | Yurih
- | Instalar python, flask | Cristovao
+ - | Instalar python, flask | Cristovao
 3 | Fazer integração do textToSpeech | Luiz
 4 | Fazer integração entre chatgpt e watson | Luiz
 3,4 | Implementação da API das integrações | Luiz
 3 | Implementar no backend lógica de criação de perguntas | Cristovao
 3,4 | Implementação da interface de áudio | Cristovao
- | Implementar versão inicial da tela principal | Elias
- | Integração front e back | Elias
- | Instalar  nodejs  | Elias / Giovanni
+ - | Implementar versão inicial da tela principal | Elias
+ - | Integração front e back | Elias
+ - | Instalar  nodejs  | Elias / Giovanni
 1,2 | Implementar tela de login e formulário de criar usuário de forma responsiva | Giovanni
 5 | Implementar tela principal do projeto, com possibilidade de incorporar perguntas | Giovanni
 1,2,6,7 | Implementar api de controle de contas | Elias
