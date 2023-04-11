@@ -54,7 +54,7 @@ História | Atividade | Responsável
 3,4 | Implementação da API das integrações | Luiz
 3 | Implementar no backend lógica de criação de perguntas | Cristovao
 3,4 | Implementação da interface de áudio | Cristovao
-0 | Implementar versão inicial da tela principal | Elias
+5 | Implementar versão inicial da tela principal | Elias
 0 | Integração front e back | Elias
 0 | Instalar  nodejs  | Elias / Giovanni
 1,2 | Implementar tela de login e formulário de criar usuário de forma responsiva | Giovanni
