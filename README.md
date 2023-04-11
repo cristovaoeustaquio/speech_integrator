@@ -23,6 +23,34 @@ Yurih|BD
 
 # Tecnologias (linguagem, frameworks e BD)
 - python3
-- pyweb ou JS
+- pyweb/flask ou JS
 - MySQL
 - React
+
+#Backlog do Produto
+1 - Como usuário, eu gostaria de conseguir me cadastrar no sistema.
+2 - Como usuário, eu gostaria de conseguir fazer login no sistema.
+3 - Como usuário, eu gostaria de falar minha pergunta.
+4 - Como usuário, eu gostaria de ouvir a resposta da minha pergunta.
+5 - Como usuário, eu gostaria que as minhas perguntas e respostas ficassem salvas.
+6 - Como usuário, eu gostaria de poder deletar minhas perguntas e respostas.
+7 - Como usuário, eu gostaria de deletar minha conta no site.
+8 - Como usuário, eu gostaria de ver minha resposta através de um robô interativo no sistema.
+
+#Backlog do Sprint
+História | Atividade | Responsável
+---------|------------|-------------
+1,2 | Instalar banco de dados e criar primeiras tabelas | Yurih
+- | Instalar python, flask | Cristovao
+3 | Fazer integração do textToSpeech | Luiz
+4 | Fazer integração entre chatgpt e watson | Luiz
+3,4 | Implementação da API das integrações | Luiz
+3 | Implementar no backend lógica de criação de perguntas | Cristovao
+3,4 | Implementação da interface de áudio | Cristovao
+- | Implementar versão inicial da tela principal | Elias
+- | Integração front e back | Elias
+- | Instalar  nodejs  | Elias / Giovanni
+1,2 | Implementar tela de login e formulário de criar usuário de forma responsiva | Giovanni
+5 | Implementar tela principal do projeto, com possibilidade de incorporar perguntas | Giovanni
+1,2,6,7 | Implementar api de controle de contas | Elias
+1,2,5 | Integração do projeto ao database | Yurih
