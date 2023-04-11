@@ -29,12 +29,19 @@ Yurih|BD
 
 # Backlog do Produto
 1 - Como usuário, eu gostaria de conseguir me cadastrar no sistema.
+
 2 - Como usuário, eu gostaria de conseguir fazer login no sistema.
+
 3 - Como usuário, eu gostaria de falar minha pergunta.
+
 4 - Como usuário, eu gostaria de ouvir a resposta da minha pergunta.
+
 5 - Como usuário, eu gostaria que as minhas perguntas e respostas ficassem salvas.
+
 6 - Como usuário, eu gostaria de poder deletar minhas perguntas e respostas.
+
 7 - Como usuário, eu gostaria de deletar minha conta no site.
+
 8 - Como usuário, eu gostaria de ver minha resposta através de um robô interativo no sistema.
 
 # Backlog do Sprint
