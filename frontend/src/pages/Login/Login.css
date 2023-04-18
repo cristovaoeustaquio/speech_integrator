@@ -1,0 +1,155 @@
+/* Coded with love by Mutiullah Samim */
+body,
+html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  background: #262c37 !important;
+}
+img {
+  height: 60%;
+  width: auto;
+}
+.form_container {
+  width: 100%;
+  height: 80%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.Logo {
+width: 80%;
+  height: 15%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+.Logo p {
+  padding: 3px;
+  font-size: 2em;
+  font-weight: 900;
+  font-family: "Nunito";
+  font-style: normal;
+  color: #e1e1e1;
+}
+
+.text_login {
+  width: 100%;
+  height: 20%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 5%;
+  font-size: 1.2rem;
+}
+
+.text_login p {
+  width: 80%;
+  font-weight: 900;
+  font-family: "Nunito";
+  font-style: normal;
+  color: #e1e1e1;
+}
+
+.login_container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.user_card {
+  height: 80%;
+  max-height: 500px;
+  width: 80%;
+  max-width: 600px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  margin-bottom: 5%;
+  justify-content: center;
+  background: #2c323e;
+  position: relative;
+  padding: 10px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  -webkit-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2),
+    0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  -moz-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2),
+    0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  border-radius: 20px;
+}
+
+.form_itens form {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  height: 60%;
+  align-content: flex-start;
+}
+.form_itens {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.input_form {
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+}
+
+.input_form label {
+  height: 30%;
+}
+
+.input_form input {
+  background-color: #262c37;
+  border: none;
+  height: 40%;
+  border-radius: 10px;
+  color: #e1e1e1;
+  padding-left: 10px;
+  font-family: "Roboto";
+}
+
+.input_form p {
+  font-size: 1em;
+  font-weight: 500;
+  font-family: "Nunito";
+  font-style: normal;
+  color: #e1e1e1;
+}
+.submit_form {
+  margin-top: 5%;
+  height: 200%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.submit_form input {
+  background-color: #399f5c;
+  width: 60%;
+  border: none;
+  height: 200%;
+  border-radius: 5px;
+  color: #e1e1e1;
+  font-weight: bold;
+  font-family: "Roboto";
+}
+.form_itens {
+  margin: 3%;
+}
+.form_itens a {
+  text-decoration: none;
+  font-size: 0.8em;
+  font-family: "Roboto";
+  font-style: normal;
+  color: #e1e1e1;
+}
