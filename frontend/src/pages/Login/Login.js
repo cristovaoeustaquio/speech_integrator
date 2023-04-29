@@ -20,7 +20,7 @@ function Login() {
       <Header />
 
 
-      <section className="card">
+      <section className="card-login">
         <div className="text_login">
           <p>
             Vamos começar?

@@ -1,0 +1,133 @@
+body,
+html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  background: #262c37 !important;
+}
+img {
+  height: 60%;
+  width: auto;
+}
+.form_container {
+  width: 100%;
+  height: 80%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+
+.subtitle {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.8rem;
+}
+
+.subtitle p {
+  width: 80%;
+  font-weight: 900;
+  font-family: "Nunito";
+  font-style: normal;
+  color: #e1e1e1;
+  text-align: center;
+  margin-bottom: 0;
+}
+
+.second-message {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.0rem;
+}
+
+.second-message p {
+  width: 80%;
+  font-weight: 500;
+  font-family: "Nunito";
+  color: #e1e1e1;
+  text-align: center;
+  margin-bottom: 0;
+}
+
+.form_itens {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.form_itens form {
+  height: 60%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  align-content: flex-start;
+}
+
+.input_form {
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+}
+
+.input_form label {
+  height: 30%;
+}
+
+.input_form input {
+  background-color: #262c37;
+  border: none;
+  height: 40%;
+  border-radius: 10px;
+  color: #e1e1e1;
+  padding-left: 10px;
+  font-family: "Roboto";
+}
+
+.input_form p {
+  font-size: 1em;
+  font-weight: 500;
+  font-family: "Nunito";
+  font-style: normal;
+  color: #e1e1e1;
+}
+
+.submit_form {
+  margin-top: 5%;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.submit_form input {
+  background-color: #399f5c;
+  width: 60%;
+  border: none;
+  height: 200%;
+  border-radius: 5px;
+  color: #e1e1e1;
+  font-weight: bold;
+  font-size: 1.2rem;
+  font-family: "Roboto";
+}
+
+.form_itens {
+  margin: 3%;
+}
+
+.form_itens a {
+  text-decoration: none;
+  font-size: 1.0rem;
+  font-weight: 500;
+  font-family: "Nunito";
+  font-style: normal;
+  color: #e1e1e1;
+}
