@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import "./Cadastro.css";
-import "../../Global.css";
 import Header from "../../Components/Header/Header.js";
 import { useNavigate } from "react-router-dom";
+import "./Cadastro.css";
+import "../../Global.css";
 
 function Cadastro() {
   const [name, setName] = useState();
@@ -17,10 +17,9 @@ function Cadastro() {
   }
 
   return (
-    <div className="container">
+    <div className="container-create-user">
       <Header />
       <section className="card-create-user">
-      /*
         <div className="subtitle">
           <p>
             Vamos começar?
@@ -31,7 +30,6 @@ function Cadastro() {
             Crie sua conta para utilizar nossos serviços com facilidade.
           </p>
         </div>
-      
         <div className="form_container">
           <div className="form_itens">
             <form action="/criar-conta" method="post">

@@ -9,6 +9,7 @@ img {
   height: 60%;
   width: auto;
 }
+
 .form_container {
   width: 100%;
   height: 80%;
@@ -17,7 +18,6 @@ img {
   align-items: center;
   justify-content: center;
 }
-
 
 .subtitle {
   width: 100%;
@@ -55,6 +55,7 @@ img {
 }
 
 .form_itens {
+  margin: 3%;
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -68,6 +69,15 @@ img {
   align-items: center;
   flex-direction: column;
   align-content: flex-start;
+}
+
+.form_itens a {
+  text-decoration: none;
+  font-size: 1.0rem;
+  font-weight: 500;
+  font-family: "Nunito";
+  font-style: normal;
+  color: #e1e1e1;
 }
 
 .input_form {
@@ -117,17 +127,4 @@ img {
   font-weight: bold;
   font-size: 1.2rem;
   font-family: "Roboto";
-}
-
-.form_itens {
-  margin: 3%;
-}
-
-.form_itens a {
-  text-decoration: none;
-  font-size: 1.0rem;
-  font-weight: 500;
-  font-family: "Nunito";
-  font-style: normal;
-  color: #e1e1e1;
 }
