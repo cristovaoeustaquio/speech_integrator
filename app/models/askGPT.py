@@ -1,6 +1,6 @@
 import openai
 import json
-from askWatson import callWatson
+from app.models.askWatson import callWatson
 
 # Load the JSON file
 with open('C:/credentials/credentials.json', 'r') as f:
@@ -10,32 +10,33 @@ with open('C:/credentials/credentials.json', 'r') as f:
 openai.api_key = keys['chatGPT']
 
 # Initialize the conversation history as an empty list
-#!history = []
+history = []
 
 def generateResponse():
     
     # Load the JSON file
-    with open('/app/ultis/transcriptions.json', 'r') as f:
+    with open('app/utils/transcriptions.json', 'r') as f:
         transcriptions = json.load(f)
 
     # Add the current question to the conversation history
-    history.append({"role": "user", "content": transcriptions['text']})
+    #history.append({"role": "user", "content": transcriptions['text']})
     
     # Concatenate all previous questions and responses
-    prompt = history
+    prompt = transcriptions[0][10::]
+
+    print('teste',prompt)
     
     # Generate the response using the OpenAI API
     response = openai.ChatCompletion.create(
       model="gpt-3.5-turbo",
-      messages=prompt,
-      max_tokens=64,
-      n=1,
-      stop=[" Human:", " AI:"],
-      temperature=0.6,
+      messages=[{"role":"user","content":prompt}]
     )
     
+    print('teste',response)
+    print('teste',response.choices[0])
+    print('teste',response.choices[0]['message']['content'])
     # Add the current response to the conversation history
-    response_text = response.choices[0]['text'].strip()
+    response_text = response.choices[0]['message']['content']
     #!history.append({"role": "assistant", "content": response_text})
 
     # Convert the transcribed text to a list of JSON objects
@@ -43,12 +44,12 @@ def generateResponse():
 
     for result in response.choices:  #! not certain
         result_dict = {
-            'text': result['text']
+            'text': result['message']['content']
         }
         results.append(result_dict)
 
     # Save the transcribed text as a JSON file
-    with open('/app/ultis/responses.json', 'w') as f:
+    with open('app/utils/responses.json', 'w') as f:
         json.dump(results, f)
 
     

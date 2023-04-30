@@ -2,10 +2,18 @@ import io
 import os
 import json
 
+from app.models.askGPT import generateResponse
+
 from google.cloud import speech_v1p1beta1 as speech
+from google.oauth2 import service_account
+
+import librosa
+import soundfile as sf
 
 
-def convertAudioToText(audio):
+os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = r'app\credentials\credentials.json'
+
+def convertAudioToText():
     """
     Transcribes the given audio data using Google Cloud Speech-to-Text API,
     and saves the transcribed text to a JSON file.
@@ -19,39 +27,55 @@ def convertAudioToText(audio):
     Raises:
         google.api_core.exceptions.GoogleAPIError: If the request fails.
     """
+    key_path = r'app\credentials\credentials.json'
+
+    # Create credentials object from the key file
+    credentials = service_account.Credentials.from_service_account_file(key_path)
+
+    # Create a SpeechClient object with the credentials
+    client = speech.SpeechClient(credentials=credentials)
+        
+    # Load the audio file
+    audio, sr = librosa.load(r'app\utils\recorded_audio.wav', sr=48000)
+
+    # Resample the audio to 16000 Hz
+    resampled_audio = librosa.resample(audio,orig_sr=sr, target_sr=16000)
+
+    # Save the resampled audio to a file
+    sf.write(r'app\utils\recorded_audio2.wav', resampled_audio, 16000)
+
     
     # Instantiates a client
     client = speech.SpeechClient()
-
+    
+    wav_bytes = ''
     # Loads the audio data into memory
-    audio = speech.RecognitionAudio(content=audio_data)
-
+    with open(r'app\utils\recorded_audio2.wav', 'rb') as f:
+        wav_bytes = f.read()
+    audio = speech.RecognitionAudio(content=wav_bytes)
+    
     # Configure the speech recognition request
     config = speech.RecognitionConfig(
         encoding=speech.RecognitionConfig.AudioEncoding.LINEAR16,
         sample_rate_hertz=16000,
         language_code='en-US')
 
+    
     # Detects speech in the audio data
     response = client.recognize(config=config, audio=audio)
 
 
     # Convert the transcribed text to a list of JSON objects
     results = []
+    print(response.results)
+        
     for result in response.results:
-        text = result.alternatives[0].transcript
-        start_time = result.alternatives[0].words[0].start_time.seconds + \
-                     result.alternatives[0].words[0].start_time.nanos / 1e9
-        end_time = result.alternatives[0].words[-1].end_time.seconds + \
-                   result.alternatives[0].words[-1].end_time.nanos / 1e9
-        result_dict = {
-            'text': text,
-            'start_time': start_time,
-            'end_time': end_time
-        }
-        results.append(result_dict)
-
+        print("Transcript: {}".format(result.alternatives[0].transcript))
+        results.append("Transcript: {}".format(result.alternatives[0].transcript))
+    
     # Save the transcribed text as a JSON file
-    with open('/app/ultis/transcriptions.json', 'w') as f:
+    with open('app/utils/transcriptions.json', 'w') as f:
         json.dump(results, f)
+
+    generateResponse()
     

@@ -7,54 +7,53 @@ let stateIndex = 0
 let mediaRecorder, chunks = [], audioURL = ''
 
 // mediaRecorder setup for audio
-if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+if(navigator.mediaDevices && navigator.mediaDevices.getUserMedia){
     console.log('mediaDevices supported..')
-  
+
     navigator.mediaDevices.getUserMedia({
-      audio: true
+        audio: true
     }).then(stream => {
-      mediaRecorder = new MediaRecorder(stream)
-      const chunks = []
-  
-      mediaRecorder.ondataavailable = (e) => {
-        chunks.push(e.data)
-      }
-  
-      mediaRecorder.onstop = () => {
-        const blob = new Blob(chunks, { 'type': 'audio/ogg; codecs=opus' })
-        chunks = []
-        audioURL = window.URL.createObjectURL(blob)
-        document.querySelector('audio').src = audioURL
-  
-        // Send the audio data to the server
-        const formData = new FormData()
-        formData.append('audio', blob, 'recording.ogg')
-        fetch('/upload.php', {
-          method: 'POST',
-          body: formData
-        })
-        .then(response => {
-          console.log('File uploaded:', response)
-        })
-        .catch(error => {
-          console.error('Error uploading file:', error)
-        })
-      }
-  
-      mediaRecorder.start()
-  
-      setTimeout(() => {
-        mediaRecorder.stop()
-      }, 5000)
-  
+        mediaRecorder = new MediaRecorder(stream)
+
+        mediaRecorder.ondataavailable = (e) => {
+            chunks.push(e.data)
+        }
+
+        mediaRecorder.onstop = async () => {
+            const blob = new Blob(chunks, {'type': 'audio/ogg; codecs=opus'});
+            chunks = [];
+            audioURL = window.URL.createObjectURL(blob);
+            document.querySelector('audio').src = audioURL;
+            
+
+            console.log(blob)
+            
+
+            // Send the blob to the server
+            const response = await fetch('http://127.0.0.1:5000/save-audio', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'audio/ogg; codecs=opus'
+            },
+            body: blob
+            });
+
+          
+            if (!response.ok) {
+              throw new Error(`HTTP error! status: ${response.status}`);
+            }
+          
+            const data = await response.json();
+            console.log(data);
+          }
+          
     }).catch(error => {
-      console.log('Following error has occured : ',error)
+        console.log('Following error has occured : ',error)
     })
-  
-  } else {
+}else{
     stateIndex = ''
     application(stateIndex)
-  }
+}
 
 const clearDisplay = () => {
     display.textContent = ''
@@ -142,5 +141,26 @@ const application = (index) => {
     }
 
 }
+
+function transcribeAudio() {
+    fetch('/sendToTTS', {
+      method: 'POST'
+    })
+    .then(response => {
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      return response.json();
+    })
+    .then(data => {
+      console.log(data);
+    })
+    .catch(error => {
+      console.error(error);
+    });
+  }
+  
+  
+
 
 application(stateIndex)

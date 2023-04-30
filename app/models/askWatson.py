@@ -1,7 +1,7 @@
 import os
 from ibm_watson import TextToSpeechV1
 from ibm_cloud_sdk_core.authenticators import IAMAuthenticator
-
+import json
 # Load the JSON file
 with open('C:/credentials/credentials.json', 'r') as f:
     keys = json.load(f)
@@ -26,7 +26,7 @@ def callWatson(txt):
     #en-US_AllisonExpressive
 
     # Configuração da saída de áudio
-    audio_file = open('/app/ultis/output.wav', 'wb')
+    audio_file = open('app/utils/output.wav', 'wb')
     
     audio_file.write(
         text_to_speech.synthesize(
@@ -37,4 +37,4 @@ def callWatson(txt):
     
     audio_file.close()
 
-    return('/app/ultis/output.wav')  
+    return('app/utils/output.wav')  
