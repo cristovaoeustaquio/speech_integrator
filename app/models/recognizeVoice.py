@@ -52,6 +52,6 @@ def convertAudioToText(audio):
         results.append(result_dict)
 
     # Save the transcribed text as a JSON file
-    with open('/app/ultis/response.json', 'w') as f:
+    with open('/app/ultis/transcriptions.json', 'w') as f:
         json.dump(results, f)
     

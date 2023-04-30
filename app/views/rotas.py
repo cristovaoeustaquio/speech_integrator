@@ -21,5 +21,4 @@ def sendToTTS():
 
 @bp.route('/getFromTTS', methods = ['GET'])
 def getFromTTS():
-    convertAudioToText(audio)
-    return 'transcripted'
+    return generateResponse()
