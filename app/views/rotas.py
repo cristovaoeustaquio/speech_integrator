@@ -20,7 +20,7 @@ def sendToTTS():
     return render_template('pagina2.html')
 
 @bp.route('/getFromTTS', methods = ['POST'])
-def sendToTTS():
+def getFromTTS():
     audio = request.get_json()['audio']
     convertAudioToText(audio)
     return 'transcripted'
