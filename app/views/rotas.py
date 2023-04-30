@@ -17,10 +17,9 @@ def outra_rota():
 def sendToTTS():
     audio = request.get_json()['audio']
     convertAudioToText(audio)
-    return render_template('pagina2.html')
+    return 'transcripted'
 
-@bp.route('/getFromTTS', methods = ['POST'])
+@bp.route('/getFromTTS', methods = ['GET'])
 def getFromTTS():
-    audio = request.get_json()['audio']
     convertAudioToText(audio)
     return 'transcripted'
