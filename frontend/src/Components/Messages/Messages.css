@@ -2,7 +2,8 @@
 .anwser{
     color: #808080;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    align-items: center;
     justify-content: center;
     border-radius: 12px;
     background-color: #A1A1A1;
@@ -22,12 +23,24 @@
 
 .question{
     display: flex;
-    flex-direction: column;
-    justify-content: center;
+    align-items: center;
+    justify-content: flex-start;
     border-radius: 12px;
     background-color: #8CD8F0;
     height: 80%;
     width: 45%; 
+}
+
+.question_play{
+    width: 20%;
+}
+
+.anwser_text{
+    width: 80%;
+}
+
+.anwser_play{
+    width: 20%;
 }
 
 .question_content {
@@ -50,14 +63,17 @@
 }
 
 .question img{
-    padding-left: 10%;
-    height: 60%;
-    width: 10%;
+    padding-left: 20%;
+    height: 40%;
+    width: 50%;
 }
 
 .anwser img{
-    fill: #808080;;
-    padding-left: 10%;
-    height: 60%;
-    width: 10%;
+    padding-left: 20%;
+    height: 40%;
+    width: 50%;
 }
+
+.anwser_text {
+    color: black
+} 
