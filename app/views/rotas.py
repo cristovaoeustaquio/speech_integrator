@@ -1,7 +1,9 @@
+import sqlite3
 from flask import Blueprint, render_template, request,jsonify
 
 from app.models.recognizeVoice import convertAudioToText
 
+dbFileName = 'database/database.db'
 bp = Blueprint('rotas', __name__)
 
 @bp.route('/')
@@ -35,5 +37,20 @@ def save_audio():
         f.write(audio_data)
 
     return 'Audio saved successfully', 200
+
+@bp.route('/login', methods=['POST'])
+def login():
+    data = request.get_json()
+    username = data['username']
+    password = data['password']
+    conn = sqlite3.connect(dbFileName)
+    c = conn.cursor()
+    c.execute("SELECT * FROM usuarios WHERE username=? AND password=?", (username, password))
+    user = c.fetchone()
+    conn.close()
+    if user:
+        return jsonify({'success': True})
+    else:
+        return jsonify({'success': False, 'message': 'Invalid username or password'})
 
 

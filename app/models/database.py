@@ -4,6 +4,8 @@ import sqlite3
 import json
 import io
 
+dbFileName = 'database/database.db'
+
 #Verificação de login
 
 def loginVerification(rows):
@@ -13,7 +15,7 @@ def loginVerification(rows):
         return True
 
 def searchLogin(user, password):
-  with sqlite3.connect('database/database.db') as conn:
+  with sqlite3.connect(dbFileName) as conn:
     cursor = conn.cursor()
     sql = "SELECT user, password FROM usuarios WHERE user=? AND password=?"
     cursor.execute(sql, (user, password))
@@ -25,7 +27,7 @@ def searchLogin(user, password):
 #Registro de login
 
 def registerLogin(user, email, password):
-  with sqlite3.connect('database/database.db') as conn:
+  with sqlite3.connect(dbFileName) as conn:
     cursor = conn.cursor()
     sql = "INSERT INTO usuarios (user, email, password) VALUES (?, ?, ?)"
     stmt = cursor.execute(sql, (user, email, password))
@@ -35,13 +37,19 @@ def registerLogin(user, email, password):
         break
 
 def create_db():
-  conn = sqlite3.connect('database/database.db')
+  conn = sqlite3.connect(dbFileName)
   # Criar a tabela de usuários
   conn.execute('''CREATE TABLE usuarios
              (id INTEGER PRIMARY KEY AUTOINCREMENT,
-             user TEXT NOT NULL,
+             username TEXT NOT NULL,
              email TEXT NOT NULL,
              password TEXT NOT NULL);''')
+  
+  conn.execute('''CREATE TABLE perguntas_e_respostas
+             (id INTEGER PRIMARY KEY AUTOINCREMENT,
+             email TEXT NOT NULL,
+             pergunta TEXT NOT NULL,
+             resposta TEXT NOT NULL);''')
   
   # Salvar as alterações no banco de dados
   conn.commit()
