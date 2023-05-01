@@ -19,8 +19,6 @@ def searchLogin(user, password):
     cursor.execute(sql, (user, password))
     rows = cursor.fetchall()
     rows=np.array(rows)
-    print(conn)
-    conn.close()
     loginExist = loginVerification(rows.shape[0])
   return loginExist
 
@@ -44,6 +42,7 @@ def create_db():
              user TEXT NOT NULL,
              email TEXT NOT NULL,
              password TEXT NOT NULL);''')
+  
   # Salvar as alterações no banco de dados
   conn.commit()
   # Fechar a conexão com o banco de dados
