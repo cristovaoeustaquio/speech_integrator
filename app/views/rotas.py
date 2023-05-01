@@ -10,6 +10,14 @@ bp = Blueprint('rotas', __name__)
 def index():
     return render_template('index.html')
 
+@bp.route('/cadastro')
+def login():
+    return render_template('index.html')
+
+@bp.route('/login')
+def cadastro():
+    return render_template('index.html')
+
 @bp.route('/outra_rota')
 def outra_rota():
     return render_template('pagina2.html')
