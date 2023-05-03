@@ -1,0 +1,4 @@
+Must to use:
+
+pip install --upgrade google-cloud-speech
+

@@ -8,3 +8,5 @@ Werkzeug==2.2.3
 google_api_python_client == 2.86.0
 openai == 0.27.5
 ibm_watson == 7.0.0
+flask_cors == 3.0.10
+librosa == 0.10.0

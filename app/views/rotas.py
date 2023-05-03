@@ -11,12 +11,25 @@ def index():
     return render_template('index.html')
 
 @bp.route('/cadastro')
-def login():
-    return render_template('index.html')
-
-@bp.route('/login')
 def cadastro():
     return render_template('index.html')
+
+@bp.route('/login', methods=['POST'])
+def login():
+    data = request.get_json()
+    username = data['username']
+    password = data['password']
+    conn = sqlite3.connect(dbFileName)
+    c = conn.cursor()
+    c.execute("SELECT * FROM usuarios WHERE username=? AND password=?", (username, password))
+    user = c.fetchone()
+    conn.close()
+    if user:
+        return jsonify({'success': True})
+    else:
+        return jsonify({'success': False, 'message': 'Invalid username or password'})
+
+
 
 @bp.route('/outra_rota')
 def outra_rota():
@@ -45,20 +58,3 @@ def save_audio():
         f.write(audio_data)
 
     return 'Audio saved successfully', 200
-
-@bp.route('/login', methods=['POST'])
-def login():
-    data = request.get_json()
-    username = data['username']
-    password = data['password']
-    conn = sqlite3.connect(dbFileName)
-    c = conn.cursor()
-    c.execute("SELECT * FROM usuarios WHERE username=? AND password=?", (username, password))
-    user = c.fetchone()
-    conn.close()
-    if user:
-        return jsonify({'success': True})
-    else:
-        return jsonify({'success': False, 'message': 'Invalid username or password'})
-
-
