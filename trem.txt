@@ -1,0 +1,39 @@
+PAGE 1
+emailLineEdit -> caixa de texto do email
+
+passwordLineEdit -> caixa de texto do password
+
+logarButton -> botão de logar -> call function para verificar credenciais e chama proxima Traceback
+
+labelErrorLogin - > aparece os erros
+
+PAGE 2
+cadastroButton -> botão de casdastro -> call next tab
+
+nameCadastrarLineEdit
+
+emailCadastrarLineEdit
+
+senhaCadastrarLineEdit
+
+cadastrarUserButton-: QPushButton -> quando clicado deve pegar os valores de nameCadastrarLineEdit, emailCadastrarLineEdit e senhaCadastrarLineEdit  e salvar em um banco de dados chamado 'database
+
+labelErrorCadastrar - > aparece os erros
+
+Page 3
+
+widgetChatArea -> area a ser utilizada pada adicionar widgetUser
+
+widgetUser - > exemplo de widget a ser adicionada para usuario
+labelTextUser
+playAudioUserButton
+
+widgetChatArea -> exemplo de widget a ser adicionada para o AI
+
+labelTextAI
+playAudioAIButton
+
+recordAudioButton -> Botão para gravar Audio
+
+
+
