@@ -1,4 +1,6 @@
 import sqlite3
+from app.models.database import *
+from app.models.askGPT import*
 from flask import Blueprint, render_template, request,jsonify
 
 from app.models.recognizeVoice import convertAudioToText
@@ -46,19 +48,37 @@ def save_audio():
 
     return 'Audio saved successfully', 200
 
-@bp.route('/login', methods=['POST'])
-def login():
+@bp.route('/logar', methods=['POST'])
+def logar():
     data = request.get_json()
-    username = data['username']
+    username = data['email']
     password = data['password']
-    conn = sqlite3.connect(dbFileName)
-    c = conn.cursor()
-    c.execute("SELECT * FROM usuarios WHERE username=? AND password=?", (username, password))
-    user = c.fetchone()
-    conn.close()
+    user = searchLogin(username,password)
     if user:
         return jsonify({'success': True})
     else:
         return jsonify({'success': False, 'message': 'Invalid username or password'})
+    
+@bp.route('/cadastrar', methods = ['POST'])
+def cadastrar():
+    username = request.json.get('username')
+    email = request.json.get('email')
+    password = request.json.get('password')
+
+    result = registerUser(username, email, password)
+    if not result:
+        return jsonify({'error': 'Username already exists'})
+
+    return jsonify({'message': 'User registered successfully'})
+
+@bp.route('/perguntar', methods=['POST'])
+def perguntar():
+    email = request.json.get('email')
+    question = request.json.get('question')
+    #Precisa construir a funcao para gerar a resposta em texto
+    answer = 'texto recebido do openai'
+    result = registerQuestion(email, question, answer)
+    if result:
+        return jsonify({'success': True})
 
 

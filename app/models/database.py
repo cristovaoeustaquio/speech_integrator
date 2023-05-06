@@ -14,27 +14,38 @@ def loginVerification(rows):
     else:
         return True
 
-def searchLogin(user, password):
+def searchLogin(email, password):
   with sqlite3.connect(dbFileName) as conn:
     cursor = conn.cursor()
-    sql = "SELECT user, password FROM usuarios WHERE user=? AND password=?"
-    cursor.execute(sql, (user, password))
+    sql = "SELECT email, password FROM usuarios WHERE email=? AND password=?"
+    cursor.execute(sql, (email, password))
     rows = cursor.fetchall()
     rows=np.array(rows)
     loginExist = loginVerification(rows.shape[0])
   return loginExist
 
-#Registro de login
+#Registro de usuario
 
-def registerLogin(user, email, password):
+def registerUser(username, email, password):
   with sqlite3.connect(dbFileName) as conn:
-    cursor = conn.cursor()
-    sql = "INSERT INTO usuarios (user, email, password) VALUES (?, ?, ?)"
-    stmt = cursor.execute(sql, (user, email, password))
-    while True:
-      res = stmt.fetchone()
-      if res is None:
-        break
+        cursor = conn.cursor()
+        query = 'SELECT email FROM usuarios WHERE email = ?'
+        cursor.execute(query, (email,))
+        result = cursor.fetchone()
+        if result:
+            return False
+        query = 'INSERT INTO usuarios (username, email, password) VALUES (?, ?, ?)'
+        cursor.execute(query, (username, email, password))
+        conn.commit()
+        return True
+
+def registerQuestion(email, question, answer):
+  with sqlite3.connect(dbFileName) as conn:
+        cursor = conn.cursor()
+        query = 'INSERT INTO perguntas_e_respostas (email, question, answer) VALUES (?, ?, ?)'
+        cursor.execute(query, (email, question, answer))
+        conn.commit()
+        return True
 
 def create_db():
   conn = sqlite3.connect(dbFileName)
@@ -48,8 +59,8 @@ def create_db():
   conn.execute('''CREATE TABLE perguntas_e_respostas
              (id INTEGER PRIMARY KEY AUTOINCREMENT,
              email TEXT NOT NULL,
-             pergunta TEXT NOT NULL,
-             resposta TEXT NOT NULL);''')
+             question TEXT NOT NULL,
+             answer TEXT NOT NULL);''')
   
   # Salvar as alterações no banco de dados
   conn.commit()
@@ -57,16 +68,6 @@ def create_db():
   conn.close()
 
 #Main
-"""
-if 'button' == 'buttonRequest':
-    user = loginInfo['user']
-    password = loginInfo['password']
-    loginExist = searchLogin(user, password)
-    print(loginExist)
-
-if 'button' == 'buttonRegister':
-    user = loginInfo['user']
-    email = loginInfo['email']
-    password = loginInfo['password']
-    registerLogin(user, email, password)
-"""
+#print(registerUser('teste2', 'teste2@gmail.com', 'teste123'))
+#print(searchLogin('teste@gmail.com','teste123'))
+#registerQuestion('teste2@gmail.com', 'no ceu tem pao2', 'nao sei2')
