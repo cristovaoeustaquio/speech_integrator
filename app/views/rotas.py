@@ -14,11 +14,16 @@ def index():
 def cadastro():
     return render_template('index.html')
 
-@bp.route('/login', methods=['POST'])
+@bp.route('/login')
 def login():
+    return render_template('index.html')
+
+@bp.route('/api/login', methods=['POST'])
+def entrar():
     data = request.get_json()
-    username = data['username']
+    username = data['email']
     password = data['password']
+    print(data,username)
     conn = sqlite3.connect(dbFileName)
     c = conn.cursor()
     c.execute("SELECT * FROM usuarios WHERE username=? AND password=?", (username, password))
@@ -28,7 +33,6 @@ def login():
         return jsonify({'success': True})
     else:
         return jsonify({'success': False, 'message': 'Invalid username or password'})
-
 
 
 @bp.route('/outra_rota')

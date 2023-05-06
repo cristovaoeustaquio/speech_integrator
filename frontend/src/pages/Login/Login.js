@@ -10,8 +10,29 @@ function Login() {
   const navigate = useNavigate();
 
   function login() {
-    alert("Bem Vindo! ")
-    navigate("/");
+    // Make a fetch request to the login endpoint
+    fetch('/api/login', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        email: email,
+        password: Password
+      })
+    })
+    .then(response => {
+      if (response.ok) {
+        alert("Bem Vindo! ");
+        navigate("/");
+      } else {
+        alert("Login falhou!");
+      }
+    })
+    .catch(error => {
+      console.error('Error making login request:', error);
+      alert("Login falhou!");
+    });
   }
 
   return (
