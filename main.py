@@ -54,6 +54,8 @@ class MainWindow(QMainWindow):
         
     def toggle_recording(self):
 
+        chat=[]
+
         if not self.is_recording:
             self.is_recording = True
             self.frames = []
@@ -74,12 +76,16 @@ class MainWindow(QMainWindow):
             with open('utils/transcriptions.json', 'r') as f:
                 transcriptions = json.load(f)
             newUser.labelTextUser.setText(transcriptions[0])
+            chat.append(transcriptions[0])
 
             newUser2 = AIWidget(self.ui.widgetChatArea)
             self.ui.verticalLayout_2.addWidget(newUser2)
             with open('utils/responses.json', 'r') as f:
                 transcriptions = json.load(f)
             newUser2.labelTextAI.setText(str(transcriptions[0]['text']))
+            chat.append(str(transcriptions[0]['text']))
+
+            registerQuestion(self.ui.emailLineEdit.text(),chat[0],chat[1])
 
             self.ui.recordAudioButton.setEnabled(True)
 
@@ -117,6 +123,7 @@ class MainWindow(QMainWindow):
             self.ui.stackedWidget.setCurrentIndex(2)
             print(getUsername(self.ui.emailLineEdit.text()))
             self.ui.bemvindoLabel.setText("Bem Vindo, "+getUsername(self.ui.emailLineEdit.text())[0][0]+"!") #! alterar para o username do banco
+            self.userChat(self.ui.emailLineEdit.text())
 
     def changePageToCadastro(self):
         self.ui.stackedWidget.setCurrentIndex(1)
@@ -133,15 +140,21 @@ class MainWindow(QMainWindow):
         else:
             self.ui.labelErrorCadastrar.setText('Usuário cadastrado com sucesso!')
             self.ui.stackedWidget.setCurrentIndex(0)
-
-    def userChat(email):
+    
+    def userChat(self,email):
         chat = viewChat(email)
+        print(chat)
         user = chat[:,0]
         GPT = chat[:,1]
         for i in range(0,len(GPT)):
-            #função_para_exibir_mensagens_usuário(user[i])
-            #função_para_exibir_mensagens_gepeto(GPT[i])
-    
+
+            newUser = userWidget(self.ui.widgetChatArea)
+            self.ui.verticalLayout_2.addWidget(newUser)
+            newUser.labelTextUser.setText(user[i])
+
+            newUser2 = AIWidget(self.ui.widgetChatArea)
+            self.ui.verticalLayout_2.addWidget(newUser2)
+            newUser2.labelTextAI.setText(GPT[i])
 
 if __name__ == "__main__":
     import sys
