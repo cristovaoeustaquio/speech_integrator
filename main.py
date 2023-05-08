@@ -65,7 +65,7 @@ class MainWindow(QMainWindow):
             self.ui.recordAudioButton.setText("Record")
             self.ui.recordAudioButton.setEnabled(False)
             
-            convertAudioToText(email)
+            convertAudioToText()
             
 
 
@@ -133,6 +133,14 @@ class MainWindow(QMainWindow):
         else:
             self.ui.labelErrorCadastrar.setText('Usuário cadastrado com sucesso!')
             self.ui.stackedWidget.setCurrentIndex(0)
+
+    def userChat(email):
+        chat = viewChat(email)
+        user = chat[:,0]
+        GPT = chat[:,1]
+        for i in range(0,len(GPT)):
+            #função_para_exibir_mensagens_usuário(user[i])
+            #função_para_exibir_mensagens_gepeto(GPT[i])
     
 
 if __name__ == "__main__":
