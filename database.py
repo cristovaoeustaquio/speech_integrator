@@ -59,7 +59,8 @@ def registerQuestion(email, question, answer):
 def viewChat(email):
   with sqlite3.connect(dbFileName) as conn:
         cursor = conn.cursor()
-        chat = 'SELECT question AND answer FROM perguntas_e_respostas WHERE email = ?'
+        query = 'SELECT question AND answer FROM perguntas_e_respostas WHERE email = ?'
+        chat = cursor.execute(query, (email,))
         chat = chat.to_numpy()
         return chat
 
