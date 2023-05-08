@@ -9,10 +9,16 @@ from PySide6.QtWidgets import (QApplication, QHBoxLayout, QLabel, QLineEdit,
     QMainWindow, QPushButton, QScrollArea, QSizePolicy,
     QSpacerItem, QStackedWidget, QVBoxLayout, QWidget)
 
+from PySide6.QtMultimedia import QSoundEffect
+
 
 class userWidget(QWidget):
-    def __init__(self, parent = None):
+    def __init__(self ,parent = None):
         super().__init__(parent)
+
+        self.setStyleSheet(u"border-radius:10px;\n"
+        "background-color:rgb(150, 150, 150);\n"
+        )
         self.setObjectName(u"widgetUser")
         self.setMinimumSize(QSize(0, 80))
         self.setMaximumSize(QSize(4544554, 80))
@@ -26,7 +32,6 @@ class userWidget(QWidget):
         self.widget_5 = QWidget(self)
         self.widget_5.setObjectName(u"widget_5")
         self.widget_5.setMinimumSize(QSize(300, 0))
-        self.widget_5.setStyleSheet(u"border:1px solid black;")
         self.horizontalLayout_6 = QHBoxLayout(self.widget_5)
         self.horizontalLayout_6.setSpacing(0)
         self.horizontalLayout_6.setObjectName(u"horizontalLayout_6")
@@ -45,12 +50,15 @@ class userWidget(QWidget):
         self.playAudioUserButton.setObjectName(u"playAudioUserButton")
         self.playAudioUserButton.setMinimumSize(QSize(45, 45))
         self.playAudioUserButton.setMaximumSize(QSize(45, 45))
+        self.playAudioUserButton.setFixedSize(45, 45)
         self.playAudioUserButton.setStyleSheet(u"QPushButton{\n"
-        "border : 1px solid red;\n"
         "border-radius:10px;\n"
-        "background-color:#AAAAAA;\n"
+        "background-image: url(utils/user.png);\n"
+        "background-repeat: no-repeat;\n"
+        "background-position: center;\n"
         "\n"
         "}QPushButton:hover{\n"
+        "background-image: url(utils/userSay.png);\n"
         "background-color:#BBBBBB;\n"
         "\n"
         "}QPushButton:pressed{\n"
@@ -70,6 +78,8 @@ class userWidget(QWidget):
         self.verticalLayout_4.setObjectName(u"verticalLayout_4")
         self.labelTextUser = QLabel(self.widget_3)
         self.labelTextUser.setObjectName(u"labelTextUser")
+        self.labelTextUser.setWordWrap(True)
+        self.labelTextUser.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding)
 
         self.verticalLayout_4.addWidget(self.labelTextUser)
 
@@ -78,24 +88,25 @@ class userWidget(QWidget):
 
 
         self.horizontalLayout_4.addWidget(self.widget_5)
-
-
+    
 
 class AIWidget(QWidget):
-    def __init__(self, parent = None):
+    
+    def __init__(self,sound_effect, parent = None):
         super().__init__(parent)
-        
-        self.widgetAI = QWidget(parent)
-        self.widgetAI.setObjectName(u"widgetAI")
-        self.widgetAI.setMinimumSize(QSize(0, 80))
-        self.widgetAI.setMaximumSize(QSize(4544554, 80))
-        self.widgetAI.setLayoutDirection(Qt.LeftToRight)
+        self.setStyleSheet(u"border-radius:10px;\n"
+        "background-color:rgb(150, 150, 150);\n"
+        )
+        self.setMinimumSize(QSize(0, 80))
+        self.setMaximumSize(QSize(4544554, 80))
+
+        self.setObjectName(u"widgetAI")
+        self.setLayoutDirection(Qt.LeftToRight)
         self.horizontalLayout_5 = QHBoxLayout(self)
         self.horizontalLayout_5.setObjectName(u"horizontalLayout_5")
         self.widget_7 = QWidget(self)
         self.widget_7.setObjectName(u"widget_7")
         self.widget_7.setMinimumSize(QSize(300, 0))
-        self.widget_7.setStyleSheet(u"border: 1px solid black;")
         self.verticalLayout_3 = QVBoxLayout(self.widget_7)
         self.verticalLayout_3.setSpacing(0)
         self.verticalLayout_3.setObjectName(u"verticalLayout_3")
@@ -114,6 +125,9 @@ class AIWidget(QWidget):
         self.horizontalLayout_11.setObjectName(u"horizontalLayout_11")
         self.labelTextAI = QLabel(self.widget_10)
         self.labelTextAI.setObjectName(u"labelTextAI")
+        self.labelTextAI.setWordWrap(True)
+        self.labelTextAI.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding)
+        
 
         self.horizontalLayout_11.addWidget(self.labelTextAI)
 
@@ -132,18 +146,23 @@ class AIWidget(QWidget):
         self.playAudioAIButton.setObjectName(u"playAudioAIButton")
         self.playAudioAIButton.setMinimumSize(QSize(45, 45))
         self.playAudioAIButton.setMaximumSize(QSize(45, 45))
+        self.playAudioAIButton.setFixedSize(45, 45)
         self.playAudioAIButton.setStyleSheet(u"QPushButton{\n"
-"border : 1px solid red;\n"
 "border-radius:10px;\n"
-"background-color:#AAAAAA;\n"
+"background-image: url(utils/ai.png);\n"
+"background-repeat: no-repeat;\n"
+"background-position: center;\n"
 "\n"
 "}QPushButton:hover{\n"
+
+"background-image: url(utils/aiSay.png);\n"
 "background-color:#BBBBBB;\n"
 "\n"
 "}QPushButton:pressed{\n"
 "background-color:#000000;\n"
 "\n"
 "}")
+        
 
         self.horizontalLayout_10.addWidget(self.playAudioAIButton)
 
@@ -169,7 +188,6 @@ class AIWidget(QWidget):
         self.horizontalSpacer_2 = QSpacerItem(153, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
 
         self.horizontalLayout_5.addItem(self.horizontalSpacer_2)
-
 
 
 

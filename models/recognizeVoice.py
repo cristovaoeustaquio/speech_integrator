@@ -15,7 +15,7 @@ from database import *
 
 os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = r'credentials\credentials.json'
 
-def convertAudioToText(email):
+def convertAudioToText():
     """
     Transcribes the given audio data using Google Cloud Speech-to-Text API,
     and saves the transcribed text to a JSON file.
@@ -59,19 +59,4 @@ def convertAudioToText(email):
     response = client.recognize(config=config, audio=audio)
 
 
-    # Convert the transcribed text to a list of JSON objects
-    results = []
-        
-    for result in response.results:
-        results.append("Transcript: {}".format(result.alternatives[0].transcript))
-    
-
-    # Save the transcribed text as a JSON file
-    with open('utils/transcriptions.json', 'w') as f:
-        json.dump(results, f)
-
-
-    generateResponse()
-
-    registerQuestion(email, )
-    
+    return generateResponse(str(response.results[0].alternatives[0].transcript))

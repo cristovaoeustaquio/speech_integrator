@@ -69,10 +69,10 @@ background: #262c37</string>
       </property>
       <property name="styleSheet">
        <string notr="true">background: #2c323e;
-border-radius: 20px;</string>
+</string>
       </property>
       <property name="currentIndex">
-       <number>2</number>
+       <number>0</number>
       </property>
       <widget class="QWidget" name="page">
        <property name="minimumSize">
@@ -263,6 +263,56 @@ font-weight: bold;</string>
         </property>
         <property name="text">
          <string>Senha</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="labelTitle_5">
+        <property name="geometry">
+         <rect>
+          <x>200</x>
+          <y>20</y>
+          <width>301</width>
+          <height>81</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>Segoe UI</family>
+          <pointsize>-1</pointsize>
+          <bold>true</bold>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">font-size: 30px;
+color: #e1e1e1;
+font-weight: 900;</string>
+        </property>
+        <property name="text">
+         <string>Speech Integrator</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="speechLabel">
+        <property name="geometry">
+         <rect>
+          <x>100</x>
+          <y>20</y>
+          <width>91</width>
+          <height>81</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>Segoe UI</family>
+          <pointsize>-1</pointsize>
+          <bold>true</bold>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">font-size: 30px;
+color: #e1e1e1;
+font-weight: 900;</string>
+        </property>
+        <property name="text">
+         <string/>
         </property>
        </widget>
       </widget>
@@ -592,7 +642,9 @@ color: #e1e1e1;</string>
          </size>
         </property>
         <property name="styleSheet">
-         <string notr="true">background-color: pink;</string>
+         <string notr="true">QWidget{
+border-radius: 15px;
+}</string>
         </property>
         <layout class="QVBoxLayout" name="verticalLayout">
          <property name="spacing">
@@ -649,7 +701,7 @@ color: #e1e1e1;</string>
                </size>
               </property>
               <property name="styleSheet">
-               <string notr="true">background-color: yellow;</string>
+               <string notr="true">background-color:  #c0c0c0;;</string>
               </property>
               <property name="text">
                <string>Bem vindo, {nome do usuario} !</string>
@@ -674,7 +726,8 @@ color: #e1e1e1;</string>
             </size>
            </property>
            <property name="styleSheet">
-            <string notr="true">background-color:green;</string>
+            <string notr="true">border-radius: 10px 0px 0px 0px;
+background-color:rgb(96, 109, 135);</string>
            </property>
            <property name="widgetResizable">
             <bool>true</bool>
@@ -695,17 +748,9 @@ color: #e1e1e1;</string>
              <item>
               <widget class="QWidget" name="widgetChatArea" native="true">
                <property name="styleSheet">
-                <string notr="true">background-color:orange;</string>
+                <string notr="true"/>
                </property>
-               <layout class="QVBoxLayout" name="verticalLayout_2">
-                <item>
-                 <widget class="QWidget" name="widget_3" native="true">
-                  <property name="styleSheet">
-                   <string notr="true">background-color: blue;</string>
-                  </property>
-                 </widget>
-                </item>
-               </layout>
+               <layout class="QVBoxLayout" name="verticalLayout_2"/>
               </widget>
              </item>
              <item>
@@ -728,7 +773,8 @@ color: #e1e1e1;</string>
          <item>
           <widget class="QWidget" name="widget_2" native="true">
            <property name="styleSheet">
-            <string notr="true">border-radius: 20px;</string>
+            <string notr="true">border-radius: 10px 0px 10px 0px;
+background-color:rgb(61, 69, 86);</string>
            </property>
            <layout class="QHBoxLayout" name="horizontalLayout_2">
             <item>

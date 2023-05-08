@@ -85,9 +85,3 @@ def create_db():
   conn.commit()
   # Fechar a conexão com o banco de dados
   conn.close()
-
-#Main
-#print(registerUser('teste2', 'teste2@gmail.com', 'teste123'))
-#print(searchLogin('teste@gmail.com','teste123'))
-#registerQuestion('teste2@gmail.com', 'no ceu tem pao2', 'nao sei2')
-
